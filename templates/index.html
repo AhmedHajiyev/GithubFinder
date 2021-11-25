@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
     <title>Github Finder</title>
+    <link href="/images/github.png" rel="icon">
+    <link href="/images/github.png"  rel="apple-touch-icon ">
 
     
 </head>
@@ -37,7 +39,7 @@
                   <div class="row">
                     <div class="col-md-3">
                       <img class="img-fluid mb-2" src="{{profile.avatar_url}}">
-                      <a href="#" target="_blank" class="btn btn-danger btn-block mb-4">Profili Görüntüle</a>
+                      <a href="{{profile.html_url}}" target="_blank" class="btn btn-danger btn-block mb-4">Profili Görüntüle</a>
                     </div>
                     <div class="col-md-9">
                       <span class="badge badge-primary">Repo Sayısı: {{profile.public_repos}} </span>
@@ -56,21 +58,22 @@
                 </div>
                 <h3 class="page-heading mb-3">En son repolar</h3>
                 <div id="repos" style ="margin-bottom: 100px;">
-                      <!-- <div class="card card-body mb-2">
+
+                  {% for repo in repos %}
+                     <div class="card card-body mb-2">
                               <div class="row">
                                 <div class="col-md-6">
-                                  <span>Sıfırdan İleri Seviyeye Python</span> 
-                                  <a href="https://www.facebook.com/" target = "_blank" class = "btn btn-danger"> Repoya Git</a>
+                                  <span>{{repo.name}}</span> 
+                                  <a href="{{repo.html_url}}" target = "_blank" class = "btn btn-danger"> Repoya Git</a>
                                 </div>
                                 <div class="col-md-6">
-                                <span class="badge badge-primary">Yıldızlar:</span>
-                                <span class="badge badge-secondary">Watchers:</span>
-                                <span class="badge badge-success">Forks:</span>
+                                <span class="badge badge-primary">Yıldızlar:{{repo.stargazers_count}}</span>
+                                <span class="badge badge-secondary">Watchers:{{repo.watchers}}</span>
+                                <span class="badge badge-success">Forks: {{repo.forks}}</span>
                                 </div>
                               </div>
-                      </div> -->
-                             
-                  <!--- Repoların Gösterileceği Kısım" -->
+                      </div> 
+                  {% endfor %}
                 </div> 
           
           
